@@ -12,18 +12,27 @@ namespace EMigrant.App.Persistencia.AppRepositorios
         {
             return _appContext.Migrantes;
         }
-        /*public Migrante Update(Migrante newEncomienda){
-            var encom= _appContext.Encomiendas.SingleOrDefault(b => b.id == newEncomienda.id);
-            if(encom != null){
-                encom.id= newEncomienda.id;
-                encom.descripcion= newEncomienda.descripcion;
-                encom.peso= newEncomienda.peso;
-                encom.tipo= newEncomienda.tipo;
-                encom.presentacion= newEncomienda.presentacion;
+        public Migrante Update(Migrante newMigrante)
+        {
+            var encom = _appContext.Migrantes.SingleOrDefault(b => b.id == newMigrante.id);
+            if (encom != null)
+            {
+                encom.id = newMigrante.id;
+                encom.nombre = newMigrante.nombre;
+                encom.apellidos = newMigrante.apellidos;
+                encom.tipoIdentificacion = newMigrante.tipoIdentificacion;
+                encom.numeroDocumento = newMigrante.numeroDocumento;
+                encom.paisOrigen = newMigrante.paisOrigen;
+                encom.fechaNacimiento = newMigrante.fechaNacimiento;
+                encom.telefono = newMigrante.telefono;
+                encom.direccionElectronica = newMigrante.direccionElectronica;
+                encom.direccionActual = newMigrante.direccionActual;
+                encom.ciudad = newMigrante.ciudad;
+                encom.situacionLaboral = newMigrante.situacionLaboral;
                 _appContext.SaveChanges();
             }
-        return encom;
-        }*/
+            return encom;
+        }
         public Migrante Create(Migrante newMigrante)
         {
             var addMigrante = _appContext.Migrantes.Add(newMigrante);
@@ -38,12 +47,13 @@ namespace EMigrant.App.Persistencia.AppRepositorios
             }
         _appContext.Encomiendas.Remove(encom);
         _appContext.SaveChanges();
-        }
-
-        public Encomienda GetEncomWithId(int encomiendaid){
-            return _appContext.Encomiendas.Find(encomiendaid);
         }*/
+
+        public Migrante GetWithId(int id)
+        {
+            return _appContext.Migrantes.Find(id);
+        }
     }
 
-    
+
 }

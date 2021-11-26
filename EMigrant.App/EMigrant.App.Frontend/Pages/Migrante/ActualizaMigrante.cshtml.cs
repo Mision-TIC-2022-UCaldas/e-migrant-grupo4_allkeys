@@ -7,35 +7,37 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using EMigrant.App.Persistencia.AppRepositorios;
 using EMigrant.App.Dominio;
 
-
-
 namespace MyApp.Namespace
 {
-    public class RegistroMigrante_Model : PageModel
+    public class ActualizaMigranteModel : PageModel
     {
         private readonly RepositorioMigrante _repositorioMigrante;
         [BindProperty]
         public Migrante Migrante { get; set; }
 
-        public RegistroMigrante_Model(RepositorioMigrante repositorioMigrante)
+        public ActualizaMigranteModel(RepositorioMigrante repositorioMigrante)
         {
 
             this._repositorioMigrante = repositorioMigrante;
         }
 
+        public IActionResult OnGet(int id)
+        {
+            Migrante = _repositorioMigrante.GetWithId(id);
+            return Page();
+
+        }
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            Migrante = _repositorioMigrante.Create(Migrante);
-            Console.WriteLine(Migrante);
-
+            if (Migrante.id > 0)
+            {
+                Migrante = _repositorioMigrante.Update(Migrante);
+            }
             return RedirectToPage("./Listar");
         }
-
-
     }
 }
