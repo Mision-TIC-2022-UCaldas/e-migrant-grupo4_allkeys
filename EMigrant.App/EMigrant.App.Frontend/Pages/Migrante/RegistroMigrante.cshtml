@@ -1,0 +1,99 @@
+﻿@page
+@model MyApp.Namespace.RegistroMigrante_Model
+@{
+    <div class="text-center" style="padding-top: 2%;">
+        <h2>Registro Migrante</h2>
+    </div>
+    <br>
+    <div class="container border text-center">
+        <form method="post">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            @* <input type="hidden" asp-for="Migrante.id"> *@
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Migrante.nombre">Nombres</label>
+                    <input asp-for="Migrante.nombre" class="form-control" placeholder=" ">
+                    <span class="text-danger" asp-validation-for="Migrante.nombre" style="width: 100%;"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Migrante.apellidos">Primer apellido</label>
+                    <input asp-for="Migrante.apellidos" class="form-control" placeholder="">
+                    <span class="text-danger" asp-validation-for="Migrante.apellidos" style="width: 100%;"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Migrante.tipoIdentificacion">Tipo de Documento</label>
+                     <input asp-for="Migrante.tipoIdentificacion" class="form-control" placeholder="">
+                    @* <select asp-for="Migrante.tipoIdentificacion" class="form-control">
+                        <option selected></option>
+                        <option >Cedula Extranjera</option>
+                        <option>Cedula Ciudadana</option>
+                        <option>Pasaporte</option>
+                    </select> *@
+                    <span class="text-danger" asp-validation-for="Migrante.tipoIdentificacion" style="width: 100%;"></span>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Migrante.numeroDocumento">Documento</label>
+                    <input asp-for="Migrante.numeroDocumento" class="form-control" placeholder="">
+                    <span class="text-danger" asp-validation-for="Migrante.numeroDocumento" style="width: 100%;"></span>
+                </div>
+                <div class="md-form col-md-4 md-outline input-with-post-icon datepicker">
+                    <label asp-for="Migrante.fechaNacimiento">Fecha de nacimiento</label>
+                    <input asp-for="Migrante.fechaNacimiento" placeholder="Selecciona la fecha de nacimiento"
+                        class="form-control" max="System.DateTime.Now">
+                    <span class="text-danger" asp-validation-for="Migrante.fechaNacimiento" style="width: 100%;"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Migrante.telefono">Telefono</label>
+                    <input asp-for="Migrante.telefono" class="form-control" placeholder="">
+                    <span class="text-danger" asp-validation-for="Migrante.telefono" style="width: 100%;"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Migrante.paisOrigen">Pais de Origen</label>
+                    <input asp-for="Migrante.paisOrigen" class="form-control" placeholder="">
+                    <span class="text-danger" asp-validation-for="Migrante.paisOrigen" style="width: 100%;"></span>
+                </div>
+                <div class="md-form col-md-4 md-outline input-with-post-icon datepicker">
+                    <label asp-for="Migrante.direccionElectronica">Direccion Electronica</label>
+                    <input asp-for="Migrante.direccionElectronica" placeholder=""
+                        class="form-control" >
+                    <span class="text-danger" asp-validation-for="Migrante.direccionElectronica"
+                        style="width: 100%;"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Migrante.direccionActual">Direccion Actual</label>
+                    <input asp-for="Migrante.direccionActual" class="form-control" placeholder="">
+                    <span class="text-danger" asp-validation-for="Migrante.direccionActual" style="width: 100%;"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Migrante.ciudad">Ciudad</label>
+                    <input asp-for="Migrante.ciudad" class="form-control" placeholder="">
+                    <span class="text-danger" asp-validation-for="Migrante.ciudad" style="width: 100%;"></span>
+                </div>
+                <div class="md-form col-md-4 md-outline input-with-post-icon datepicker">
+                    <label asp-for="Migrante.situacionLaboral">Situacion Laboral</label>
+                    <input asp-for="Migrante.situacionLaboral" placeholder="" class="form-control"
+                        max="System.DateTime.Now">
+                    <span class="text-danger" asp-validation-for="Migrante.situacionLaboral" style="width: 100%;"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                    <a class="btn btn-primary table-btn" asp-page="./ListaClientes">
+                        Volver
+                    </a>
+                    <input type="submit" value="Agregar" class="btn btn-success">
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+}
