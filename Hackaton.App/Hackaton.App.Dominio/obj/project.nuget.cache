@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "208EFDYESD2lv3Dw5M8dSgUDeFI+sfNipcLQfgv0hm05sRb+23S0N5Bh+yV9zuM0WxtLOd2yMLGXcT2FdU8nVA==",
+  "success": true,
+  "projectFilePath": "E:\\Hackaton\\Hackaton.App\\Hackaton.App.Dominio\\Hackaton.App.Dominio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\julia\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\julia\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
