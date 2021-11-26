@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "pfm9bGP7r/HQQ2RrmwNMzFf+i6Ffnd5iWEHi+Cfrq1cvpdk1+eCF4J0q6nCmYFYas/RTMGhe0mvbonm7JheWKQ==",
+  "success": true,
+  "projectFilePath": "E:\\U_DE_CALDAS\\Hackaton\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\julia\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\julia\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
