@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using EMigrant.App.Persistencia.AppRepositorios;
 using EMigrant.App.Dominio;
+using Microsoft.AspNetCore.Authorization;   
 
 
 
 namespace MyApp.Namespace
 {
+       [Authorize]
     public class RegistroMigrante_Model : PageModel
     {
         private readonly RepositorioMigrante _repositorioMigrante;
