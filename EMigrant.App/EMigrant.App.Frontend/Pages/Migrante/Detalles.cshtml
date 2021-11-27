@@ -1,0 +1,78 @@
+﻿@page
+@model MyApp.Namespace.DetallesModel
+@{
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Detalles de Migrante</h2>
+</div>
+<br>
+<div class="container border text-center">
+    @if (Model.MigranteEncontrado)
+    {
+        <table class="table">
+            <tr>
+                <th colspan="2">
+                    Datos del Migrante
+                </th>
+            </tr>
+            <tr>
+                <th>Tipo de Documento:</th>
+                <td>@Model.Migrante.tipoIdentificacion</td>
+            </tr>
+            <tr>
+                <th>Documento:</th>
+                <td>@Model.Migrante.numeroDocumento</td>
+            </tr>
+            <tr>
+                <th>Nombres:</th>
+                <td>@Model.Migrante.nombre</td>
+            </tr>
+            <tr>
+                <th>Apellidos:</th>
+                <td>@Model.Migrante.apellidos</td>
+            </tr>
+            <tr>
+                <th>Pais de Origen:</th>
+                <td>@Model.Migrante.paisOrigen</td>
+            </tr>
+            <tr>
+                <th>Fecha de nacimiento:</th>
+                <td>@Model.Migrante.fechaNacimiento</td>
+            </tr>
+            <tr>
+                <th>Direccion Electronica:</th>
+                <td>@Model.Migrante.direccionElectronica</td>
+            </tr>
+            <tr>
+                <th>Teléfono:</th>
+                <td>@Model.Migrante.telefono</td>
+            </tr>
+            <tr>
+                <th>Direccion Actual:</th>
+                <td>@Model.Migrante.direccionActual</td>
+            </tr>
+            <tr>
+                <th>Ciudad:</th>
+                <td>@Model.Migrante.ciudad</td>
+            </tr>
+            <tr>
+                <th>Situacion Laboral:</th>
+                <td>@Model.Migrante.situacionLaboral</td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            No se encontro ese Migrante
+        </div>
+        <br>
+        <br>
+        <br>
+    }
+    <div>
+        <a class="btn btn-primary table-btn" asp-page="./Listar">
+            Volver
+        </a>
+    </div>
+</div>

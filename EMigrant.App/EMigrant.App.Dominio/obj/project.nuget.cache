@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "GYl1MHaDnUaMEMsO0vNhNfYOEzTXdeIjpFNfYVgwYALyylyn6k2556SbdHIO9NXZXKQgVyPfjamrp+xa9jXIMw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\julia\\Desktop\\Hackaton\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\julia\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
