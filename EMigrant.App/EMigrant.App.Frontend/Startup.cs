@@ -30,7 +30,7 @@ namespace EMigrant.App.Frontend
             services.AddSingleton<RepositorioMigrante>(new RepositorioMigrante(new EMigrant.App.Persistencia.AppContext()));
             services.AddSingleton<RepositorioFamiliares>(new RepositorioFamiliares(new EMigrant.App.Persistencia.AppContext()));
             services.AddSingleton<RepositorioAmigos>(new RepositorioAmigos(new EMigrant.App.Persistencia.AppContext()));
-            services.AddSingleton<RepositorioFamilias>(new RepositorioFamilias(new EMigrant.App.Persistencia.AppContext()));
+            services.AddSingleton<RepositorioParientes>(new RepositorioParientes(new EMigrant.App.Persistencia.AppContext()));
             //services.AddSingleton<RepositorioMigrante>();
             services.AddControllersWithViews();
 
@@ -65,3 +65,7 @@ namespace EMigrant.App.Frontend
         }
     }
 }
+/*
+dotnet ef migrations add IdentityAzure --context IdentityDataContext
+dotnet ef database update --context IdentityDataContext
+*/

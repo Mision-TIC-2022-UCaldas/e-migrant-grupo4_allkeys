@@ -7,11 +7,11 @@ namespace EMigrant.App.Persistencia.AppRepositorios
     public class RepositorioAmigos
     {
         private readonly AppContext _appContext;
-
+        private readonly RepositorioMigrante _repositorioMigrante;
         public RepositorioAmigos(AppContext appContext){
             
             this._appContext= appContext;
-
+            this._repositorioMigrante = new RepositorioMigrante(appContext);
         }
 
         public IEnumerable<Amigos> GetAll()
@@ -57,6 +57,18 @@ namespace EMigrant.App.Persistencia.AppRepositorios
         //     return _appContext.Amigos.FirstOrDefault(
         //         e=>e.numeroDocumento == numeroDocumento);
         // }
+        public IEnumerable<Migrante> GetAllGrupo(int id)
+        {
+            IEnumerable<Amigos> allAmigos = _appContext.Amigos;
+            IEnumerable<Migrante> migrantesAmigos = Enumerable.Empty<Migrante>();
+            foreach (var f in allAmigos)
+            {
+                if(f.GrupoFamiliarId==id){
+                    migrantesAmigos.Append(_repositorioMigrante.GetWithId(f.AmigoId));
+                }
+            }
+            return migrantesAmigos;
+        } 
     }
 
 

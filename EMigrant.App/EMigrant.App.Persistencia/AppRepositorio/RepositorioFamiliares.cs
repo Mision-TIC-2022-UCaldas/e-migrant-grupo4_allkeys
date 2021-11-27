@@ -58,7 +58,6 @@ namespace EMigrant.App.Persistencia.AppRepositorios
         {
             return _appContext.Familiares.Find(id);
         }
-         
         
     }
 

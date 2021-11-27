@@ -1,5 +1,0 @@
-E:\U_DE_CALDAS\Hackaton\e-migrant-grupo4_allkeys\EMigrant.App\EMigrant.App.Persistencia\obj\Debug\netstandard2.0\EMigrant.App.Persistencia.csproj.AssemblyReference.cache
-E:\U_DE_CALDAS\Hackaton\e-migrant-grupo4_allkeys\EMigrant.App\EMigrant.App.Persistencia\obj\Debug\netstandard2.0\EMigrant.App.Persistencia.GeneratedMSBuildEditorConfig.editorconfig
-E:\U_DE_CALDAS\Hackaton\e-migrant-grupo4_allkeys\EMigrant.App\EMigrant.App.Persistencia\obj\Debug\netstandard2.0\EMigrant.App.Persistencia.AssemblyInfoInputs.cache
-E:\U_DE_CALDAS\Hackaton\e-migrant-grupo4_allkeys\EMigrant.App\EMigrant.App.Persistencia\obj\Debug\netstandard2.0\EMigrant.App.Persistencia.AssemblyInfo.cs
-E:\U_DE_CALDAS\Hackaton\e-migrant-grupo4_allkeys\EMigrant.App\EMigrant.App.Persistencia\obj\Debug\netstandard2.0\EMigrant.App.Persistencia.csproj.CoreCompileInputs.cache

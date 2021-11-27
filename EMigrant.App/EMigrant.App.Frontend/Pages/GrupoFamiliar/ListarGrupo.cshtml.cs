@@ -12,32 +12,30 @@ namespace MyApp.Namespace
     public class ListarGrupoModel : PageModel
     {
         private readonly RepositorioMigrante _repositorioMigrante;
-        private readonly RepositorioFamiliares _repositorioFaminiliares;
+        private readonly RepositorioFamiliares _repoGrupo;
+        private readonly RepositorioParientes _repoParientes;
+        private readonly RepositorioAmigos _repoAmigos;
         public Migrante Migrante { get; set; }
-        public IEnumerable<Migrante> Familiares { get; set; }
+        public GrupoFamiliar grupo {get; set;}
+        public IEnumerable<Migrante> Parientes { get; set; }
+        public IEnumerable<Migrante> Amigos { get; set; }
 
-        public ListarGrupoModel(RepositorioFamiliares repositorioFaminiliares, RepositorioMigrante repositorioMigrante)
+        public ListarGrupoModel(RepositorioFamiliares repositorioFamiliares, RepositorioMigrante repositorioMigrante, RepositorioParientes repoParientes, RepositorioAmigos repoAmigos)
         {
-
             this._repositorioMigrante = repositorioMigrante;
-            this._repositorioFaminiliares = repositorioFaminiliares;
-
-
+            this._repoGrupo = repositorioFamiliares;
+            this._repoParientes = repoParientes;
+            this._repoAmigos = repoAmigos;
         }
 
-        // public IEnumerable<Migrante> GetFamiliares()
-        // {
-        //     return Migrante.GrupoFamiliar.Familiares;
-        // }
-
-        public IActionResult OnGet(int id, IEnumerable<Migrante> familiares)
+        public IActionResult OnGet(int id)
         {
             if (id > 0)
             {
                 Migrante = _repositorioMigrante.GetWithId(id);
-                Familiares = familiares;
-                
-                
+                grupo = _repoGrupo.GetWithId(Migrante.GrupoFamiliarId);
+                Parientes = _repoParientes.GetAllGrupo(Migrante.GrupoFamiliarId);
+                Amigos = _repoAmigos.GetAllGrupo(Migrante.GrupoFamiliarId);
                 return Page();
             }
             return RedirectToPage("../Migrante/Listar");
