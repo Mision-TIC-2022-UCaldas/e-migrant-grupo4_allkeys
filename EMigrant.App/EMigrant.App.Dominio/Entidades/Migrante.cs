@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EMigrant.App.Dominio{
-    public class Migrante{
+namespace EMigrant.App.Dominio
+{
+    
+
+    public class Migrante
+    {
+
         public int id { get; set; }
         [Required]
         public string nombre { get; set; }
@@ -13,6 +18,7 @@ namespace EMigrant.App.Dominio{
         [Required]
         public string tipoIdentificacion { get; set; }
         [Required]
+        //[Index(IsUnique = true)]
         public string numeroDocumento { get; set; }
         [Required]
         public string paisOrigen { get; set; }
@@ -27,6 +33,8 @@ namespace EMigrant.App.Dominio{
         public string direccionActual { get; set; }
         public string ciudad { get; set; }
         public string situacionLaboral { get; set; }
+        public GrupoFamiliar GrupoFamiliar { get; set; }
+        public int GrupoFamiliarId { get; set; }
     }
 
 }

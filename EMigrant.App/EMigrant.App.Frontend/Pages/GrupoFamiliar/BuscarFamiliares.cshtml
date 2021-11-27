@@ -1,0 +1,93 @@
+﻿@page
+@model MyApp.Namespace.BuscarFamiliaresModel
+@{
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Buscar familiar</h2>
+</div>
+<br>
+Escribe el numero de documento de tu familiar para agregarlo
+@if(!Model.familiarEncontrado){
+<div class="row">
+    <div class="col-md-12">
+        <div class="border contenedor-filtro">
+            <form action="get" class="form-inline">
+                <div class="form-group col-md-2 text-center">
+                    <h3>Documento</h3>
+                </div>
+                <div class="form-group col-md-4 text-center">
+                    <input asp-for="@Model.textoFiltro" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-2 text-center">
+                    <!--<input type="submit" value="Filtrar" class="btn btn-primary">-->
+                    <button id="botonFiltro" type="submit" class="btn btn-primary" asp-route-filtro="@Model.textoFiltro">
+                        Buscar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+}
+else{
+<table class="table">
+    <tr>
+        <th colspan="2">
+            Datos del Migrante
+        </th>
+    </tr>
+    <tr>
+        <th>Tipo de Documento:</th>
+        <td>@Model.Migrante.tipoIdentificacion</td>
+    </tr>
+    <tr>
+        <th>Documento:</th>
+        <td>@Model.Migrante.numeroDocumento</td>
+    </tr>
+    <tr>
+        <th>Nombres:</th>
+        <td>@Model.Migrante.nombre</td>
+    </tr>
+    <tr>
+        <th>Apellidos:</th>
+        <td>@Model.Migrante.apellidos</td>
+    </tr>
+    <tr>
+        <th>Pais de Origen:</th>
+        <td>@Model.Migrante.paisOrigen</td>
+    </tr>
+    <tr>
+        <th>Fecha de nacimiento:</th>
+        <td>@Model.Migrante.fechaNacimiento</td>
+    </tr>
+    <tr>
+        <th>Direccion Electronica:</th>
+        <td>@Model.Migrante.direccionElectronica</td>
+    </tr>
+    <tr>
+        <th>Teléfono:</th>
+        <td>@Model.Migrante.telefono</td>
+    </tr>
+    <tr>
+        <th>Direccion Actual:</th>
+        <td>@Model.Migrante.direccionActual</td>
+    </tr>
+    <tr>
+        <th>Ciudad:</th>
+        <td>@Model.Migrante.ciudad</td>
+    </tr>
+    <tr>
+        <th>Situacion Laboral:</th>
+        <td>@Model.Migrante.situacionLaboral</td>
+    </tr>
+</table>
+<div class="form-row">
+    <div>
+        <a class="btn btn-primary table-btn" asp-page="./ListarGrupo">
+            Volver
+        </a>
+        <input type="submit" value="Agregar a Grupo familiar" class="btn btn-success">
+    </div>
+
+</div>
+}

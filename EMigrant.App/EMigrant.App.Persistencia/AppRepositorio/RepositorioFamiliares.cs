@@ -4,22 +4,20 @@ using System.Linq;
 using System;
 namespace EMigrant.App.Persistencia.AppRepositorios
 {
-    public class RepositorioMigrante
+    public class RepositorioFamiliares
     {
         private readonly AppContext _appContext;
 
-        public RepositorioMigrante(AppContext appContext){
-            
-            this._appContext= appContext;
-
-        }
-
-        public IEnumerable<Migrante> GetAll()
+        public RepositorioFamiliares(AppContext appContext)
         {
-            return _appContext.Migrantes;
+            this._appContext = appContext;
         }
-        
-        public Migrante Update(Migrante newMigrante)
+
+        public IEnumerable<GrupoFamiliar> GetAll()
+        {
+            return _appContext.Familiares;
+        }
+        /*public Migrante Update(Migrante newMigrante)
         {
             var encom = _appContext.Migrantes.SingleOrDefault(b => b.id == newMigrante.id);
             if (encom != null)
@@ -39,12 +37,12 @@ namespace EMigrant.App.Persistencia.AppRepositorios
                 _appContext.SaveChanges();
             }
             return encom;
-        }
-        public Migrante Create(Migrante newMigrante)
+        }*/
+        public GrupoFamiliar Create(GrupoFamiliar newGrupo)
         {
-            var addMigrante = _appContext.Migrantes.Add(newMigrante);
+            var addFamiliares = _appContext.Familiares.Add(newGrupo);
             _appContext.SaveChanges();
-            return addMigrante.Entity;
+            return addFamiliares.Entity;
         }
         /*public void Delete(int id)
         {
@@ -56,15 +54,12 @@ namespace EMigrant.App.Persistencia.AppRepositorios
         _appContext.SaveChanges();
         }*/
 
-        public Migrante GetWithId(int id)
+        public GrupoFamiliar GetWithId(int id)
         {
-            return _appContext.Migrantes.Find(id);
+            return _appContext.Familiares.Find(id);
         }
-        public Migrante GetWithDoc(string numeroDocumento)
-        {
-            return _appContext.Migrantes.FirstOrDefault(
-                e=>e.numeroDocumento == numeroDocumento);
-        }
+         
+        
     }
 
 

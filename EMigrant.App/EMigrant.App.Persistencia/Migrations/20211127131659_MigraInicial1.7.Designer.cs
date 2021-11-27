@@ -4,60 +4,22 @@ using EMigrant.App.Persistencia;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EMigrant.App.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20211127131659_MigraInicial1.7")]
+    partial class MigraInicial17
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
-
-            modelBuilder.Entity("EMigrant.App.Dominio.Amigos", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("AmigoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GrupoFamiliarId")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("GrupoFamiliarId");
-
-                    b.ToTable("Amigos");
-                });
-
-            modelBuilder.Entity("EMigrant.App.Dominio.Familias", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("FamiliarId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GrupoFamiliarId")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("GrupoFamiliarId");
-
-                    b.ToTable("Familias");
-                });
 
             modelBuilder.Entity("EMigrant.App.Dominio.GrupoFamiliar", b =>
                 {
@@ -127,32 +89,10 @@ namespace EMigrant.App.Persistencia.Migrations
                     b.ToTable("Migrantes");
                 });
 
-            modelBuilder.Entity("EMigrant.App.Dominio.Amigos", b =>
-                {
-                    b.HasOne("EMigrant.App.Dominio.GrupoFamiliar", "grupoFamiliar")
-                        .WithMany("amigos")
-                        .HasForeignKey("GrupoFamiliarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("grupoFamiliar");
-                });
-
-            modelBuilder.Entity("EMigrant.App.Dominio.Familias", b =>
-                {
-                    b.HasOne("EMigrant.App.Dominio.GrupoFamiliar", "grupoFamiliar")
-                        .WithMany("familias")
-                        .HasForeignKey("GrupoFamiliarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("grupoFamiliar");
-                });
-
             modelBuilder.Entity("EMigrant.App.Dominio.Migrante", b =>
                 {
                     b.HasOne("EMigrant.App.Dominio.GrupoFamiliar", "GrupoFamiliar")
-                        .WithMany()
+                        .WithMany("Familiares")
                         .HasForeignKey("GrupoFamiliarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -162,9 +102,7 @@ namespace EMigrant.App.Persistencia.Migrations
 
             modelBuilder.Entity("EMigrant.App.Dominio.GrupoFamiliar", b =>
                 {
-                    b.Navigation("amigos");
-
-                    b.Navigation("familias");
+                    b.Navigation("Familiares");
                 });
 #pragma warning restore 612, 618
         }

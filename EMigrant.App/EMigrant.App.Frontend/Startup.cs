@@ -27,8 +27,11 @@ namespace EMigrant.App.Frontend
         {
             services.AddRazorPages();
             services.AddControllersWithViews();
-            //services.AddSingleton<RepositorioMigrante>(new RepositorioMigrante(new EMigrant.App.Persistencia.AppContext()));
-            services.AddSingleton<RepositorioMigrante>();
+            services.AddSingleton<RepositorioMigrante>(new RepositorioMigrante(new EMigrant.App.Persistencia.AppContext()));
+            services.AddSingleton<RepositorioFamiliares>(new RepositorioFamiliares(new EMigrant.App.Persistencia.AppContext()));
+            services.AddSingleton<RepositorioAmigos>(new RepositorioAmigos(new EMigrant.App.Persistencia.AppContext()));
+            services.AddSingleton<RepositorioFamilias>(new RepositorioFamilias(new EMigrant.App.Persistencia.AppContext()));
+            //services.AddSingleton<RepositorioMigrante>();
             services.AddControllersWithViews();
 
         }

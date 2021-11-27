@@ -1,9 +1,9 @@
 ﻿@page
-@model MyApp.Namespace.ListarModel
+@model MyApp.Namespace.ListarGrupoModel
 @{
 }
 <div class="text-center" style="padding-top: 2%;">
-    <h2>Gestion de Migrantes</h2>
+    <h2>Gestion Grupo Familiar de @Model.Migrante.nombre</h2>
 </div>
 <br>
 <div class="row">
@@ -11,9 +11,9 @@
         
     </div>
     <div class="col-md-5 contenedor-btn-agregar">
-        <a class="btn btn-success boton-agregar" asp-page="./RegistroMigrante">
+        <a class="btn btn-success boton-agregar" asp-page="./BuscarFamiliares">
             <i class="fas fa-user-plus"></i>
-            <span class="tooltip">Agregar Migrante</span>
+            <span class="tooltip">Buscar Familiares</span>
         </a>
     </div>
 </div>
@@ -30,9 +30,8 @@
             <th>Detalles</th>
             <th>Modificar</th>
             <th>Eliminar</th>
-            <th>Grupo Familiar</th>
         </tr>
-        @foreach (var Mig in Model.Migrantes)
+        @foreach (var Mig in Model.Familiares)
         {
             <tr>
                 <td>@Mig.nombre @Mig.apellidos</td>
@@ -41,28 +40,14 @@
                 <td>@Mig.paisOrigen</td>
                 <td>@Mig.fechaNacimiento</td>
                 <td>
-                    <a class="btn btn-primary table-btn" asp-page="./Detalles" asp-route-Id="@Mig.id">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
-                </td>
-                <td>
-                    <a class="btn btn-warning table-btn" asp-page="./ActualizaMigrante" asp-route-Id="@Mig.id">
-                        <i class="fas fa-user-edit"></i>
-                    </a>
-                </td>
-                <td>
                     <a class="btn btn-danger table-btn" asp-page="./Eliminar" asp-route-Id="@Mig.id">
                         <i class="fas fa-user-times"></i>
                     </a>
                 </td>
-                <td>
-                    <a class="btn btn-primary table-btn" asp-page="../GrupoFamiliar/ListarGrupo" asp-route-Id="@Mig.id">
-                        <i class="fas fa-user-times"></i>
-                    </a>
-                </td>
+                
             </tr>
         }
     </table>
     <br>
-    <h5>Existen @Model.Migrantes.Count() Migrantes en la base de datos</h5>
+    <h5>Existen @Model.Familiares.Count() Fammiliares en su Grupo Familiar</h5>
 </div>
