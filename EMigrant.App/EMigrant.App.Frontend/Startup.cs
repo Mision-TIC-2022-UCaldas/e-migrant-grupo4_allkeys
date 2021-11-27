@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using EMigrant.App.Persistencia.AppRepositorios;
+using Microsoft.AspNetCore.Authentication;
 
 namespace EMigrant.App.Frontend
 {
@@ -25,6 +26,7 @@ namespace EMigrant.App.Frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddControllersWithViews();
             //services.AddSingleton<RepositorioMigrante>(new RepositorioMigrante(new EMigrant.App.Persistencia.AppContext()));
             services.AddSingleton<RepositorioMigrante>();
             services.AddControllersWithViews();
@@ -37,6 +39,7 @@ namespace EMigrant.App.Frontend
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseAuthentication();
             }
             else
             {

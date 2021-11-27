@@ -7,7 +7,7 @@ namespace EMigrant.App.Persistencia
         public DbSet<Migrante> Migrantes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             if(!optionsBuilder.IsConfigured){
-                optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = AllKeys_Grupo4");
+                optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = AllKeys_Grupo__4");
             }
         }
     }
