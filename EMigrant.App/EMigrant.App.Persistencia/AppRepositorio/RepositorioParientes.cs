@@ -1,3 +1,5 @@
+using System.Reflection;
+using System.Net.Mail;
 using System.Collections.Generic;
 using EMigrant.App.Dominio;
 using System.Linq;
@@ -12,7 +14,7 @@ namespace EMigrant.App.Persistencia.AppRepositorios
         public RepositorioParientes(AppContext appContext){
             
             this._appContext= appContext;
-            this._repositorioMigrante = new RepositorioMigrante(appContext);
+            this._repositorioMigrante = new RepositorioMigrante(new AppContext());
         }
 
         public IEnumerable<Parientes> GetAll()
@@ -38,30 +40,28 @@ namespace EMigrant.App.Persistencia.AppRepositorios
             _appContext.SaveChanges();
             return addParientes.Entity;
         }
-        /*public void Delete(int id)
+        public void Delete(int id)
         {
-        var encom= _appContext.Encomiendas.Find(id);
-        if(encom != null){
+            var persona_encontrada = _appContext.Parientes.FirstOrDefault(p => p.FamiliarId == id);
+            if(persona_encontrada == null)
                 return;
-            }
-        _appContext.Encomiendas.Remove(encom);
-        _appContext.SaveChanges();
-        }*/
+            _appContext.Parientes.Remove(persona_encontrada);
+            _appContext.SaveChanges();
+        }
 
         public Parientes GetWithId(int id)
         {
             return _appContext.Parientes.Find(id);
         }
 
-        public IEnumerable<Migrante> GetAllGrupo(int id)
+        public List<Migrante> GetAllGrupo(int id)
         {
-            IEnumerable<Parientes> allParientes = _appContext.Parientes;
-            IEnumerable<Migrante> migrantesFamiliares = Enumerable.Empty<Migrante>();
+            IEnumerable<Parientes> allParientes = _appContext.Parientes.Where(e => e.GrupoFamiliarId==id).ToList();
+            List<Migrante> migrantesFamiliares = new List<Migrante>();
             foreach (var f in allParientes)
             {
-                if(f.GrupoFamiliarId==id){
-                    migrantesFamiliares.Append(_repositorioMigrante.GetWithId(f.FamiliarId));
-                }
+                Migrante m = _repositorioMigrante.GetWithId(f.FamiliarId);
+                migrantesFamiliares.Add(m);
             }
             return migrantesFamiliares;
         } 

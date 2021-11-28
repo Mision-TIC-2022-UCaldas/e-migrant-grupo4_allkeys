@@ -11,7 +11,7 @@ namespace EMigrant.App.Persistencia.AppRepositorios
         public RepositorioAmigos(AppContext appContext){
             
             this._appContext= appContext;
-            this._repositorioMigrante = new RepositorioMigrante(appContext);
+            this._repositorioMigrante = new RepositorioMigrante(new AppContext());
         }
 
         public IEnumerable<Amigos> GetAll()
@@ -38,15 +38,16 @@ namespace EMigrant.App.Persistencia.AppRepositorios
             _appContext.SaveChanges();
             return addAmigos.Entity;
         }
-        /*public void Delete(int id)
+        public void Delete(int id)
         {
-        var encom= _appContext.Encomiendas.Find(id);
-        if(encom != null){
+            Console.WriteLine(id);
+            var persona_encontrada = _appContext.Amigos.FirstOrDefault(p => p.AmigoId == id);
+            Console.WriteLine(persona_encontrada);
+            if(persona_encontrada == null)
                 return;
-            }
-        _appContext.Encomiendas.Remove(encom);
-        _appContext.SaveChanges();
-        }*/
+            _appContext.Amigos.Remove(persona_encontrada);
+            _appContext.SaveChanges();
+        }
 
         public Amigos GetWithId(int id)
         {
@@ -57,15 +58,14 @@ namespace EMigrant.App.Persistencia.AppRepositorios
         //     return _appContext.Amigos.FirstOrDefault(
         //         e=>e.numeroDocumento == numeroDocumento);
         // }
-        public IEnumerable<Migrante> GetAllGrupo(int id)
+        public List<Migrante> GetAllGrupo(int id)
         {
-            IEnumerable<Amigos> allAmigos = _appContext.Amigos;
-            IEnumerable<Migrante> migrantesAmigos = Enumerable.Empty<Migrante>();
+            IEnumerable<Amigos> allAmigos = _appContext.Amigos.Where(e => e.GrupoFamiliarId==id).ToList();
+            List<Migrante> migrantesAmigos = new List<Migrante>();
             foreach (var f in allAmigos)
             {
-                if(f.GrupoFamiliarId==id){
-                    migrantesAmigos.Append(_repositorioMigrante.GetWithId(f.AmigoId));
-                }
+                Migrante m = _repositorioMigrante.GetWithId(f.AmigoId);
+                migrantesAmigos.Add(m);
             }
             return migrantesAmigos;
         } 

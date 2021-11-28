@@ -30,8 +30,6 @@
             <th>Tipo Documento</th>
             <th>Pais de Origen</th>
             <th>Fecha Nacimiento</th>
-            <th>Detalles</th>
-            <th>Modificar</th>
             <th>Eliminar</th>
         </tr>
         @foreach (var Mig in Model.Parientes)
@@ -43,7 +41,7 @@
                 <td>@Mig.paisOrigen</td>
                 <td>@Mig.fechaNacimiento</td>
                 <td>
-                    <a class="btn btn-danger table-btn" asp-page="./Eliminar" asp-route-Id="@Mig.id">
+                    <a class="btn btn-danger table-btn" asp-page="./BorrarFamiliar" asp-route-id="@Mig.id" asp-route-idUsuario="@Model.Migrante.id">
                         <i class="fas fa-user-times"></i>
                     </a>
                 </td>
@@ -52,7 +50,7 @@
         }
     </table>
     <br>
-    <h5>Existen @Model.Parientes.Count() Fammiliares en su Grupo Familiar</h5>
+    <h5>Existen @Model.Parientes.Count() Familiares en su Grupo</h5>
 </div>
 <div class="text-center" style="padding-top: 2%;">
     <h2>Amigos</h2>
@@ -65,8 +63,6 @@
             <th>Tipo Documento</th>
             <th>Pais de Origen</th>
             <th>Fecha Nacimiento</th>
-            <th>Detalles</th>
-            <th>Modificar</th>
             <th>Eliminar</th>
         </tr>
         @foreach (var Mig in Model.Amigos)
@@ -78,7 +74,7 @@
                 <td>@Mig.paisOrigen</td>
                 <td>@Mig.fechaNacimiento</td>
                 <td>
-                    <a class="btn btn-danger table-btn" asp-page="./Eliminar" asp-route-Id="@Mig.id">
+                    <a class="btn btn-danger table-btn" asp-page="./BorrarAmigo" asp-route-Id="@Mig.id" asp-route-idUsuario="@Model.Migrante.id">
                         <i class="fas fa-user-times"></i>
                     </a>
                 </td>
@@ -87,5 +83,5 @@
         }
     </table>
     <br>
-    <h5>Existen @Model.Amigos.Count() Fammiliares en su Grupo Familiar</h5>
+    <h5>Existen @Model.Amigos.Count() Amigos en su Grupo</h5>
 </div>

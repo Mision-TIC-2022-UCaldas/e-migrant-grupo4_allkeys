@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace MyApp.Namespace
         public string textoFiltro { get; set; }
         public int idMigranteUsuario { get; set; }
         public int idGrupo { get; set; }
+        public int idNuevo { get; set; }
         [Required(ErrorMessage = "La relacion con el migrante es necesaria.")]
         [BindProperty]
         public string Relacion { get; set; }
@@ -35,19 +37,8 @@ namespace MyApp.Namespace
             this._repositorioParientes = repositorioParientes;
             familiarEncontrado=false;
         }
-        public IActionResult OnGet(String? textoFiltro, String? Id, String? IdGrupo){
-            if(!String.IsNullOrEmpty(textoFiltro)){
-                Console.WriteLine(textoFiltro);
-                Migrante=_repositorioMigrante.GetWithDoc(textoFiltro);
-                if(Migrante != null){
-                    //Migrante usuario = _repositorioMigrante.GetWithId(idMigranteUsuario);
-                    Console.WriteLine(familiarEncontrado);
-                    familiarEncontrado=true;
-                    //return Page();
-                }else{
-                    familiarEncontrado=false;
-                }
-            }
+        public IActionResult OnGet(String? Id, String? IdGrupo){
+            
             if(!String.IsNullOrEmpty(Id)&&!String.IsNullOrEmpty(IdGrupo))
             {
                 try
@@ -66,9 +57,38 @@ namespace MyApp.Namespace
             }
             return Page();
         }
-        
 
-        public IActionResult OnPostCrear(String IdGrupo, String Id){
+        public IActionResult OnPostFiltro(String? textoFiltro, String IdGrupo, String Id){
+            if(!String.IsNullOrEmpty(textoFiltro)){
+                 try
+                {
+                    idMigranteUsuario=Int32.Parse(Id);
+                    idGrupo=Int32.Parse(IdGrupo);
+                    //Console.WriteLine(idMigranteUsuario);
+                    Console.WriteLine("idGrupo post int");
+                    Console.WriteLine(IdGrupo);
+                }
+                catch (System.Exception ex)
+                {
+                    idMigranteUsuario=0;
+                    idGrupo = 0;
+                }
+                Console.WriteLine(textoFiltro);
+                Migrante=_repositorioMigrante.GetWithDoc(textoFiltro);
+                idNuevo = Migrante.id;
+                if(Migrante != null){
+                    //Migrante usuario = _repositorioMigrante.GetWithId(idMigranteUsuario);
+                    Console.WriteLine(familiarEncontrado);
+                    familiarEncontrado=true;
+                    //return Page();
+                }else{
+                    familiarEncontrado=false;
+                }
+            }
+            return Page();
+        }
+
+        public IActionResult OnPostCrear(String IdGrupo, String Id, String IdNuevo){
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -79,6 +99,7 @@ namespace MyApp.Namespace
             {
                 idMigranteUsuario=Int32.Parse(Id);
                 idGrupo=Int32.Parse(IdGrupo);
+                idNuevo=Int32.Parse(IdNuevo);
                 //Console.WriteLine(idMigranteUsuario);
                 Console.WriteLine("idGrupo post int");
                 Console.WriteLine(IdGrupo);
@@ -87,22 +108,23 @@ namespace MyApp.Namespace
             {
                 idMigranteUsuario=0;
                 idGrupo = 0;
+                idNuevo = 0;
             }
             if(Relacion=="Familiar")
             {
                 Parientes = new Parientes();
-                Parientes.FamiliarId = idMigranteUsuario;
+                Parientes.FamiliarId = idNuevo;
                 Parientes.GrupoFamiliarId = idGrupo;
                 Parientes=_repositorioParientes.Create(Parientes);
             }
             else
             {
                 Amigos = new Amigos();
-                Amigos.AmigoId = idMigranteUsuario;
+                Amigos.AmigoId = idNuevo;
                 Amigos.GrupoFamiliarId = idGrupo;
                 Amigos=_repositorioAmigos.Create(Amigos);
             }
-            return RedirectToPage("./ListarGrupo?id="+Migrante.id);
+            return RedirectToPage("./ListarGrupo", new {id = Id});
         }
 
     }

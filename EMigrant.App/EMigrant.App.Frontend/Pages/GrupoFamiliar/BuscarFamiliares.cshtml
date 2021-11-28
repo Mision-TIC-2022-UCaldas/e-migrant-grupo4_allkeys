@@ -11,7 +11,7 @@ Escribe el numero de documento de tu familiar para agregarlo
 <div class="row">
     <div class="col-md-12">
         <div class="border contenedor-filtro">
-            <form method="get" class="form-inline">
+            <form method="post" class="form-inline">
                 <div class="form-group col-md-2 text-center">
                     <h3>Documento</h3>
                 </div>
@@ -26,7 +26,7 @@ Escribe el numero de documento de tu familiar para agregarlo
                 </div>
                 <div class="form-group col-md-2 text-center">
                     <!--<input type="submit" value="Filtrar" class="btn btn-primary">-->
-                    <button id="botonFiltro" type="submit" class="btn btn-primary" asp-route-filtro="@Model.textoFiltro" asp-route-Id="@Model.idMigranteUsuario" asp-route-IdGrupo="@Model.idGrupo">
+                    <button id="botonFiltro" type="submit" class="btn btn-primary" asp-page-handler="Filtro" asp-route-filtro="@Model.textoFiltro" asp-route-Id="@Model.idMigranteUsuario" asp-route-IdGrupo="@Model.idGrupo">
                         Buscar
                     </button>
                 </div>
@@ -105,7 +105,16 @@ else{
         <a class="btn btn-primary table-btn" asp-page="./ListarGrupo">
             Volver
         </a>
-        <input type="submit" value="Agregar a Grupo familiar" class="btn btn-success" asp-route-IdGrupo="@Model.idGrupo">
+         <div class="form-group col-md-4 text-center">
+            <input type="hidden" asp-for="@Model.idMigranteUsuario" class="form-control">
+        </div>
+        <div class="form-group col-md-4 text-center">
+            <input type="hidden" asp-for="@Model.idGrupo" class="form-control">
+        </div>
+        <div class="form-group col-md-4 text-center">
+            <input type="hidden" asp-for="@Model.idNuevo" class="form-control">
+        </div>
+        <input type="submit" value="Agregar a Grupo familiar" class="btn btn-success" asp-page-handler="Crear" asp-route-Id="@Model.idMigranteUsuario" asp-route-IdGrupo="@Model.idGrupo" asp-route-IdNuevo="@Model.idNuevo">
     </div>
     </div>
 </div>

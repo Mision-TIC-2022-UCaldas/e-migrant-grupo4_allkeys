@@ -17,8 +17,8 @@ namespace MyApp.Namespace
         private readonly RepositorioAmigos _repoAmigos;
         public Migrante Migrante { get; set; }
         public GrupoFamiliar grupo {get; set;}
-        public IEnumerable<Migrante> Parientes { get; set; }
-        public IEnumerable<Migrante> Amigos { get; set; }
+        public List<Migrante> Parientes { get; set; }
+        public List<Migrante> Amigos { get; set; }
 
         public ListarGrupoModel(RepositorioFamiliares repositorioFamiliares, RepositorioMigrante repositorioMigrante, RepositorioParientes repoParientes, RepositorioAmigos repoAmigos)
         {
@@ -39,8 +39,7 @@ namespace MyApp.Namespace
                 return Page();
             }
             return RedirectToPage("../Migrante/Listar");
-
-
         }
+
     }
 }
