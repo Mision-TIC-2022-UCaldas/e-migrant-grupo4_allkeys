@@ -1,0 +1,30 @@
+﻿@page
+@model MyApp.Namespace.IndexModel
+@{
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Index</h2>
+</div>
+<br>
+<div class="container border text-center">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <h2>Entidad Colaboradora</h2>
+        </div>
+        <div class="form-group col-md-6">
+            <h2>Gerencia del proyecto</h2>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <a class="btn btn-primary table-btn" asp-page="../EntidadesColaboradoras/Lista">
+                Gestion de entidades
+            </a>
+        </div>
+        <div class="form-group col-md-6">
+            <a class="btn btn-primary table-btn" asp-page="./Index">
+                Por definir
+            </a>
+        </div>
+    </div>
+</div>

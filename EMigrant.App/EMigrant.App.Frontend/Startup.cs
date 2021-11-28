@@ -31,6 +31,8 @@ namespace EMigrant.App.Frontend
             services.AddSingleton<RepositorioFamiliares>(new RepositorioFamiliares(new EMigrant.App.Persistencia.AppContext()));
             services.AddSingleton<RepositorioAmigos>(new RepositorioAmigos(new EMigrant.App.Persistencia.AppContext()));
             services.AddSingleton<RepositorioParientes>(new RepositorioParientes(new EMigrant.App.Persistencia.AppContext()));
+            services.AddSingleton<RepositorioEntidades>(new RepositorioEntidades(new EMigrant.App.Persistencia.AppContext()));
+            services.AddSingleton<RepositorioServicio>(new RepositorioServicio(new EMigrant.App.Persistencia.AppContext()));
             //services.AddSingleton<RepositorioMigrante>();
             services.AddControllersWithViews();
 

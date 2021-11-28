@@ -1,0 +1,50 @@
+﻿@page
+@model EMigrant.App.Frontend.EntidadesColaboradoras.ServiciosEntidadAgregarModel
+@{
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Agregar Servicio a entidad @Model.Entidad.RazonSocial</h2>
+</div>
+<br>
+<div class="container border text-center">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        @* <input type="hidden" asp-for="Servicio.id"> *@
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Servicio.Tipo">Tipo</label>
+                <select asp-for="Servicio.Tipo" class="form-control">
+                    <option selected>Salud</option>
+                    <option >Juridico</option>
+                    <option >Viveres</option>
+                    <option >Comida preparada</option>
+                    <option >Empleo</option>
+                    <option >Alojamiento Temporal</option>
+                    <option >Alojamiento Permanente</option>
+                    <option >Educacion</option>
+                    <option >Otros</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Servicio.Tipo" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Servicio.Descripcion">Descripción</label>
+                <input asp-for="Servicio.Descripcion" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Servicio.Descripcion" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Servicio.Habilitado">Servicio Habilitado</label>
+                    <input asp-for="Servicio.Habilitado" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Servicio.Habilitado" style="width: 100%;"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <a class="btn btn-primary table-btn" asp-page="./Lista">
+                    Volver
+                </a>
+                <input type="submit" value="Agregar" class="btn btn-success" asp-route-id="@Model.Entidad.id">
+            </div>
+
+        </div>
+    </form>
+</div>

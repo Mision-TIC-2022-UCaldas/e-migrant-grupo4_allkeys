@@ -1,0 +1,70 @@
+﻿@page
+@model EMigrant.App.Frontend.EntidadesColaboradoras.ListaModel
+@{
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Gestion de Entidades colaboradoras</h2>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-7">
+        
+    </div>
+    <div class="col-md-5 contenedor-btn-agregar">
+        <a class="btn btn-success boton-agregar" asp-page="./Agregar">
+            <i class="fas fa-user-plus"></i>
+            <span class="tooltip">Agregar Entidad</span>
+        </a>
+    </div>
+</div>
+<br>
+<br>
+<div class="text-center">
+    <table class="table table-hover">
+        <tr>
+            <th>Razón social</th>
+            <th>NIT</th>
+            <th>Dirección</th>
+            <th>Ciudad</th>
+            <th>Telefono</th>
+            <th>Sector</th>
+            <th>Detalles</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+            <th>Servicios de la entidad</th>
+        </tr>
+        @foreach (var e in Model.Entidades)
+        {
+            <tr>
+                <td>@e.RazonSocial</td>
+                <td>@e.Nit</td>
+                <td>@e.Direccion</td>
+                <td>@e.Ciudad</td>
+                <td>@e.Telefono</td>
+                <td>@e.Sector</td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./Detalles" asp-route-Id="@e.id">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-warning table-btn" asp-page="./Actualizar" asp-route-Id="@e.id">
+                        <i class="fas fa-user-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger table-btn" asp-page="./Eliminar" asp-route-Id="@e.id">
+                        <i class="fas fa-user-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./ServiciosEntidad" asp-route-Id="@e.id">
+                        <i class="fas fa-user-times"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+    <br>
+    <h5>Existen @Model.Entidades.Count() Entidades colaboradoras en la base de datos</h5>
+</div>

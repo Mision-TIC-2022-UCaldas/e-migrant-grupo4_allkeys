@@ -1,0 +1,63 @@
+﻿@page
+@model EMigrant.App.Frontend.EntidadesColaboradoras.ServiciosEntidadModel
+@{
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Gestion de Servicios de la entidad @Model.Entidad.RazonSocial</h2>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-1">
+        <a class="btn btn-primary table-btn" asp-page="./Lista">
+            Volver
+        </a>
+    </div>
+    <div class="col-md-6">
+        
+    </div>
+    <div class="col-md-5 contenedor-btn-agregar">
+        <a class="btn btn-success boton-agregar" asp-page="./ServiciosEntidadAgregar" asp-route-id="@Model.Entidad.id">
+            <i class="fas fa-user-plus"></i>
+            <span class="tooltip">Agregar Servicio</span>
+        </a>
+    </div>
+</div>
+<br>
+<br>
+<div class="text-center">
+    <table class="table table-hover">
+        <tr>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Modificar</th>
+            <th>Habilitar / deshabilitar</th>
+        </tr>
+        @foreach (var e in Model.Servicios)
+        {
+            <tr>
+                <td>@e.Tipo</td>
+                <td>@e.Descripcion</td>
+                @if(e.Habilitado==true)
+                {
+                    <td class="text-success font-weight-bold">HABILITADO</td>
+                }else
+                {
+                    <td class="text-danger font-weight-bold">DESHABILITADO</td>
+                }
+                <td>
+                    <a class="btn btn-warning table-btn" asp-page="./ServiciosEntidadActualizar" asp-route-id="@e.id" asp-route-idEntidad="@Model.Entidad.id">
+                        <i class="fas fa-user-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./ServicioHabilitar" asp-route-id="@e.id" asp-route-idEntidad="@Model.Entidad.id">
+                        <i class="fas fa-user-times"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+    <br>
+    <h5>Existen @Model.Servicios.Count() servicios asociados a la entidad</h5>
+</div>

@@ -8,6 +8,8 @@ namespace EMigrant.App.Persistencia
         public DbSet<GrupoFamiliar> Familiares { get; set; }
         public DbSet<Amigos> Amigos { get; set; }
         public DbSet<Parientes> Parientes { get; set; }
+        public DbSet<EntidadColaboradora> Entidades { get; set; }
+        public DbSet<Servicio> Servicios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             if(!optionsBuilder.IsConfigured){
@@ -17,6 +19,6 @@ namespace EMigrant.App.Persistencia
     }
 }
 /*
-dotnet ef migrations add Migracion2.3 --startup-project ..\EMigrant.App.Consola\
+dotnet ef migrations add Migracion3.1 --startup-project ..\EMigrant.App.Consola\
 dotnet ef database update --startup-project ..\EMigrant.App.Consola\
 */

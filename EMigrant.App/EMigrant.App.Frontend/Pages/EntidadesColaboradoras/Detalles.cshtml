@@ -1,0 +1,74 @@
+﻿@page
+@model EMigrant.App.Frontend.EntidadesColaboradoras.DetallesModel
+@{
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Detalles de la entidad Colaboradora</h2>
+</div>
+<br>
+<div class="container border text-center">
+    @if (Model.EntidadEncontrada)
+    {
+        <table class="table">
+            <tr>
+                <th colspan="2">
+                    Datos de la entidad
+                </th>
+            </tr>
+            <tr>
+                <th>Razon social:</th>
+                <td>@Model.Entidad.RazonSocial</td>
+            </tr>
+            <tr>
+                <th>Nit:</th>
+                <td>@Model.Entidad.Nit</td>
+            </tr>
+            <tr>
+                <th>Dirección:</th>
+                <td>@Model.Entidad.Direccion</td>
+            </tr>
+            <tr>
+                <th>Ciudad:</th>
+                <td>@Model.Entidad.Ciudad</td>
+            </tr>
+            <tr>
+                <th>Telefono:</th>
+                <td>@Model.Entidad.Telefono</td>
+            </tr>
+            <tr>
+                <th>Dirección Electronica:</th>
+                <td>@Model.Entidad.DireccionElectronica</td>
+            </tr>
+            <tr>
+                <th>Pagina Web:</th>
+                <td>@Model.Entidad.PaginaWeb</td>
+            </tr>
+            <tr>
+                <th>Sector:</th>
+                <td>@Model.Entidad.Sector</td>
+            </tr>
+            <tr>
+                <th>Servicios</th>
+                <th>
+                    <a class="btn btn-danger table-btn" asp-page="./ServiciosEntidad" asp-route-Id="@Model.id">
+                        Consultar todos
+                    </a>
+                </th>
+            </tr>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            No se encontro esa Entidad
+        </div>
+        <br>
+        <br>
+        <br>
+    }
+    <div>
+        <a class="btn btn-primary table-btn" asp-page="./Lista">
+            Volver
+        </a>
+    </div>
+</div>

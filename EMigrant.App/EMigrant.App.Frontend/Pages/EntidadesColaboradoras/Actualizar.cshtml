@@ -1,0 +1,77 @@
+﻿@page
+@model EMigrant.App.Frontend.EntidadesColaboradoras.ActualizarModel
+@{
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Actualizar Entidad Colaboradora</h2>
+</div>
+<br>
+<div class="container border text-center">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="Entidad.id">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Entidad.RazonSocial">RazonSocial</label>
+                <input asp-for="Entidad.RazonSocial" class="form-control" placeholder=" ">
+                <span class="text-danger" asp-validation-for="Entidad.RazonSocial" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Entidad.Nit">NIT</label>
+                <input asp-for="Entidad.Nit" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Entidad.Nit" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Entidad.Direccion">Direccion</label>
+                    <input asp-for="Entidad.Direccion" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Entidad.Direccion" style="width: 100%;"></span>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Entidad.Ciudad">Ciudad</label>
+                <input asp-for="Entidad.Ciudad" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Entidad.Ciudad" style="width: 100%;"></span>
+            </div>
+            <div class="md-form col-md-4 md-outline input-with-post-icon datepicker">
+                <label asp-for="Entidad.Telefono">Telefono</label>
+                <input asp-for="Entidad.Telefono" placeholder="" class="form-control">
+                <span class="text-danger" asp-validation-for="Entidad.Telefono" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Entidad.DireccionElectronica">Dirección electronica</label>
+                <input asp-for="Entidad.DireccionElectronica" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Entidad.DireccionElectronica" style="width: 100%;"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Entidad.PaginaWeb">Pagina Web</label>
+                <input asp-for="Entidad.PaginaWeb" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Entidad.PaginaWeb" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                 <label asp-for="Entidad.Sector">Sector</label>
+                <select asp-for="Entidad.Sector" class="form-control">
+                    <option selected>Publico</option>
+                    <option selected>Privado</option>
+                    <option selected>Sin animo de lucro</option>
+                    <option selected>No gubernamental</option>
+                    <option selected>Otro</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Entidad.Sector" style="width: 100%;"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <a class="btn btn-primary table-btn" asp-page="./Lista">
+                    Volver
+                </a>
+                <input type="submit" value="Actualizar" class="btn btn-warning">
+            </div>
+
+        </div>
+
+    </form>
+</div>
