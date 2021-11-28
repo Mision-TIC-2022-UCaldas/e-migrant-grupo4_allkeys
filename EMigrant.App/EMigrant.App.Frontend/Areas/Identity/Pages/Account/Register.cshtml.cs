@@ -61,6 +61,11 @@ namespace EMigrant.App.Frontend.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
         }
+        public async Task<IActionResult> OnPostLogoutAsync()
+    {
+        await HttpContext.SignOutAsync();
+        return RedirectToPage();
+    }
 
         public async Task OnGetAsync(string returnUrl = null)
         {

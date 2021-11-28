@@ -1,33 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Juan\\Documents\\MISION TIC U CALDAS\\CICLO 4\\HACKATON\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj": {}
+    "C:\\Users\\julia\\Desktop\\Hackaton\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Juan\\Documents\\MISION TIC U CALDAS\\CICLO 4\\HACKATON\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj": {
+    "C:\\Users\\julia\\Desktop\\Hackaton\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Juan\\Documents\\MISION TIC U CALDAS\\CICLO 4\\HACKATON\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\julia\\Desktop\\Hackaton\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj",
         "projectName": "EMigrant.App.Dominio",
-        "projectPath": "C:\\Users\\Juan\\Documents\\MISION TIC U CALDAS\\CICLO 4\\HACKATON\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj",
-        "packagesPath": "C:\\Users\\Juan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Juan\\Documents\\MISION TIC U CALDAS\\CICLO 4\\HACKATON\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\obj\\",
+        "projectPath": "C:\\Users\\julia\\Desktop\\Hackaton\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\EMigrant.App.Dominio.csproj",
+        "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\julia\\Desktop\\Hackaton\\e-migrant-grupo4_allkeys\\EMigrant.App\\EMigrant.App.Dominio\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Juan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

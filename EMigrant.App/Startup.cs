@@ -1,17 +1,20 @@
+using login2.Data;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using EMigrant.App.Persistencia.AppRepositorios;
-using Microsoft.AspNetCore.Authentication;
 
-namespace EMigrant.App.Frontend
+namespace login2
 {
     public class Startup
     {
@@ -25,23 +28,24 @@ namespace EMigrant.App.Frontend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            services.AddControllersWithViews();
-            services.AddSingleton<RepositorioMigrante>(new RepositorioMigrante(new EMigrant.App.Persistencia.AppContext()));
-            services.AddSingleton<RepositorioFamiliares>(new RepositorioFamiliares(new EMigrant.App.Persistencia.AppContext()));
-            services.AddSingleton<RepositorioAmigos>(new RepositorioAmigos(new EMigrant.App.Persistencia.AppContext()));
-            services.AddSingleton<RepositorioParientes>(new RepositorioParientes(new EMigrant.App.Persistencia.AppContext()));
-            //services.AddSingleton<RepositorioMigrante>();
-            services.AddControllersWithViews();
-            services.AddAuthentication()
-        .AddGoogle(options =>
-        {
-            IConfigurationSection googleAuthNSection =
-                Configuration.GetSection("Authentication:Google");
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDatabaseDeveloperPageExceptionFilter();
 
-            options.ClientId = googleAuthNSection["ClientId"];
-            options.ClientSecret = googleAuthNSection["ClientSecret"];
-        });
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddControllersWithViews();
+
+            services.AddAuthentication()
+            .AddGoogle(googleOptions =>
+             {
+
+
+                 googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                 googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+             });
+
 
         }
 
@@ -51,30 +55,29 @@ namespace EMigrant.App.Frontend
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseAuthentication();
+                app.UseMigrationsEndPoint();
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
     }
 }
-/*
-dotnet ef migrations add IdentityAzure --context IdentityDataContext
-dotnet ef database update --context IdentityDataContext
-*/
