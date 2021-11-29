@@ -27,17 +27,23 @@
 <div class="text-center">
     <table class="table table-hover">
         <tr>
-            <th>Tipo</th>
-            <th>Descripción</th>
+            <th>Nombre</th>
+            <th>Migrantes Max</th>
+            <th>Fecha inicio</th>
+            <th>Fecha Fin</th>
             <th>Estado</th>
-            <th>Modificar</th>
+            <th>Estado de habilitación</th>
+            <th>Actualizar</th>
             <th>Habilitar / deshabilitar</th>
         </tr>
         @foreach (var e in Model.Servicios)
         {
             <tr>
-                <td>@e.Tipo</td>
-                <td>@e.Descripcion</td>
+                <td>@e.Nombre</td>
+                <td>@e.MaximoNumMigrantes</td>
+                <td>@e.FechaInicio</td>
+                <td>@e.FechaFinalizacion</td>
+                <td>@e.Estado</td>
                 @if(e.Habilitado==true)
                 {
                     <td class="text-success font-weight-bold">HABILITADO</td>

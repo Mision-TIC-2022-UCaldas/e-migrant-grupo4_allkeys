@@ -17,6 +17,8 @@ namespace EMigrant.App.Dominio
         public string Telefono { get; set; }
         [Required]
         public string Sector { get; set; }
+        [Required]
+        public string Tipo { get; set; }
         public string DireccionElectronica { get; set; }
         public string PaginaWeb { get; set; }
     }

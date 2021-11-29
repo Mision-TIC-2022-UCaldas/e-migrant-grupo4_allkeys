@@ -23,9 +23,10 @@ namespace EMigrant.App.Frontend.EntidadesColaboradoras
             this._repoEntidades = _repoEntidades;
         }
 
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
             Entidad = _repoEntidades.GetWithId(id);
+            return Page();
         }
 
         public IActionResult OnPost(int id)
@@ -36,7 +37,7 @@ namespace EMigrant.App.Frontend.EntidadesColaboradoras
                 Servicio = _repoServicios.Create(Servicio);
                 return RedirectToPage("./ServiciosEntidad", new {id = id});
             }
-            return Page();
+            return OnGet(id);
         }
     }
 }

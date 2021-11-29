@@ -39,8 +39,11 @@ namespace EMigrant.App.Persistencia.AppRepositorios
         {
             var ServicioEncontrado = _appContext.Servicios.FirstOrDefault(e=>e.id == servicio.id);
             if(ServicioEncontrado != null){
-                ServicioEncontrado.Tipo = servicio.Tipo;
-                ServicioEncontrado.Descripcion = servicio.Descripcion;
+                ServicioEncontrado.Nombre = servicio.Nombre;
+                ServicioEncontrado.MaximoNumMigrantes = servicio.MaximoNumMigrantes;
+                ServicioEncontrado.FechaInicio = servicio.FechaInicio;
+                ServicioEncontrado.FechaFinalizacion = servicio.FechaFinalizacion;
+                ServicioEncontrado.Estado = servicio.Estado;
                 ServicioEncontrado.Habilitado = servicio.Habilitado;
                 _appContext.SaveChanges();
             }

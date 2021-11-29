@@ -14,11 +14,12 @@ namespace EMigrant.App.Frontend.EntidadesColaboradoras
         private readonly RepositorioEntidades _repositorioEntidades;
         [BindProperty]
         public EntidadColaboradora Entidad { get; set; }
+        public bool nitRepetido {get; set;}
 
         public ActualizarModel(RepositorioEntidades repositorioEntidades)
         {
-
             this._repositorioEntidades = repositorioEntidades;
+            nitRepetido = false;
         }
 
         public IActionResult OnGet(int id)

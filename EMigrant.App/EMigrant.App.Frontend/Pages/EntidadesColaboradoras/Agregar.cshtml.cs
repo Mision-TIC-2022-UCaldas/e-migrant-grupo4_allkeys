@@ -17,17 +17,23 @@ namespace EMigrant.App.Frontend.EntidadesColaboradoras
         //public string Sector {get; set;}
         [BindProperty]
         public EntidadColaboradora Entidad {get; set;}
+        public bool nitRepetido {get; set;}
         public AgregarModel(RepositorioEntidades _repoEntidades)
         {
             this._repoEntidades = _repoEntidades;
+            nitRepetido = false;
         }
 
         public IActionResult OnPost()
         {
             if(ModelState.IsValid)
             {
-                Entidad = _repoEntidades.Create(Entidad);
-                return RedirectToPage("./Lista");
+                if(!_repoEntidades.VerificarExistenciaNit(Entidad.Nit))
+                {
+                    Entidad = _repoEntidades.Create(Entidad);
+                    return RedirectToPage("./Lista");
+                }
+                nitRepetido = true;
             }
             return Page();
         }

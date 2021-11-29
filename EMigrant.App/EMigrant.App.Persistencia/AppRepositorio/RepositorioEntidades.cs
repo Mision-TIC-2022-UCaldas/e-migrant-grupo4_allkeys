@@ -41,9 +41,20 @@ namespace EMigrant.App.Persistencia.AppRepositorios
                 entidadEncontrado.DireccionElectronica = entidad.DireccionElectronica;
                 entidadEncontrado.PaginaWeb = entidad.PaginaWeb;
                 entidadEncontrado.Sector = entidad.Sector;
+                entidadEncontrado.Tipo = entidad.Tipo;
                 _appContext.SaveChanges();
             }
             return entidadEncontrado;
+        }
+
+        public bool VerificarExistenciaNit(string nit)
+        {
+            var entidadEncontrado = _appContext.Entidades.FirstOrDefault(e=>e.Nit == nit);
+            if(entidadEncontrado != null)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

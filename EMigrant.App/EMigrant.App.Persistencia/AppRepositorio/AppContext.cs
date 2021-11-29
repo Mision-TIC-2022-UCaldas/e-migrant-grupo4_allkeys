@@ -19,6 +19,6 @@ namespace EMigrant.App.Persistencia
     }
 }
 /*
-dotnet ef migrations add Migracion3.1 --startup-project ..\EMigrant.App.Consola\
+dotnet ef migrations add Migracion3.2 --startup-project ..\EMigrant.App.Consola\
 dotnet ef database update --startup-project ..\EMigrant.App.Consola\
 */

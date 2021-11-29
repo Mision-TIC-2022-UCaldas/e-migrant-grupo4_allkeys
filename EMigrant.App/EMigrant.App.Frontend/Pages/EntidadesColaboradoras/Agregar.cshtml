@@ -10,6 +10,10 @@
     <form method="post">
         <div class="text-danger" asp-validation-summary="All"></div>
         @* <input type="hidden" asp-for="Entidad.id"> *@
+        @if(Model.nitRepetido)
+        {
+            <div class="text-danger">Ese Nit ya esta asociado a otra entidad, verifique sus datos</div>
+        }
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label asp-for="Entidad.RazonSocial">RazonSocial</label>
@@ -52,7 +56,7 @@
                 <span class="text-danger" asp-validation-for="Entidad.PaginaWeb" style="width: 100%;"></span>
             </div>
             <div class="form-group col-md-4">
-                 <label asp-for="Entidad.Sector">Sector</label>
+                <label asp-for="Entidad.Sector">Sector</label>
                 <select asp-for="Entidad.Sector" class="form-control">
                     <option selected>Publico</option>
                     <option selected>Privado</option>
@@ -61,6 +65,21 @@
                     <option selected>Otro</option>
                 </select>
                 <span class="text-danger" asp-validation-for="Entidad.Sector" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Entidad.Tipo">Tipo</label>
+                <select asp-for="Entidad.Tipo" class="form-control">
+                    <option selected>Salud</option>
+                    <option >Juridico</option>
+                    <option >Viveres</option>
+                    <option >Comida preparada</option>
+                    <option >Empleo</option>
+                    <option >Alojamiento Temporal</option>
+                    <option >Alojamiento Permanente</option>
+                    <option >Educacion</option>
+                    <option >Otros</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Entidad.Tipo" style="width: 100%;"></span>
             </div>
         </div>
         <div class="form-row">

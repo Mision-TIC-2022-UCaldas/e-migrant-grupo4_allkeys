@@ -3,7 +3,7 @@
 @{
 }
 <div class="text-center" style="padding-top: 2%;">
-    <h2>Agregar Servicio a Servicio @Model.Entidad.RazonSocial</h2>
+    <h2>Actualizar Servicio de la entidad @Model.Entidad.RazonSocial</h2>
 </div>
 <br>
 <div class="container border text-center">
@@ -12,24 +12,36 @@
         <input type="hidden" asp-for="Servicio.id">
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label asp-for="Servicio.Tipo">Tipo</label>
-                <select asp-for="Servicio.Tipo" class="form-control">
-                    <option >Salud</option>
-                    <option >Juridico</option>
-                    <option >Viveres</option>
-                    <option >Comida preparada</option>
-                    <option >Empleo</option>
-                    <option >Alojamiento Temporal</option>
-                    <option >Alojamiento Permanente</option>
-                    <option >Educacion</option>
-                    <option >Otros</option>
-                </select>
-                <span class="text-danger" asp-validation-for="Servicio.Tipo" style="width: 100%;"></span>
+                <label asp-for="Servicio.Nombre">Nombre del servicio</label>
+                <input asp-for="Servicio.Nombre" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Servicio.Nombre" style="width: 100%;"></span>
             </div>
             <div class="form-group col-md-4">
-                <label asp-for="Servicio.Descripcion">Descripción</label>
-                <input asp-for="Servicio.Descripcion" class="form-control" placeholder="">
-                <span class="text-danger" asp-validation-for="Servicio.Descripcion" style="width: 100%;"></span>
+                <label asp-for="Servicio.MaximoNumMigrantes">Maximo numero de migrantes</label>
+                <input asp-for="Servicio.MaximoNumMigrantes" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Servicio.MaximoNumMigrantes" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Servicio.FechaInicio">Fecha de inicio de la oferta</label>
+                    <input asp-for="Servicio.FechaInicio" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Servicio.FechaInicio" style="width: 100%;"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Servicio.FechaFinalizacion">Fecha finalizacion de la oferta</label>
+                <input asp-for="Servicio.FechaFinalizacion" class="form-control" placeholder="">
+                <span class="text-danger" asp-validation-for="Servicio.FechaFinalizacion" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Servicio.Estado">Estado</label>
+                <select asp-for="Servicio.Estado" class="form-control">
+                    <option >Activos</option>
+                    <option >Cerrados</option>
+                    <option >Con Cupo</option>
+                    <option >Sin Cupo</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Servicio.Estado" style="width: 100%;"></span>
             </div>
             <div class="form-group col-md-4">
                 <label asp-for="Servicio.Habilitado">Servicio Habilitado</label>
